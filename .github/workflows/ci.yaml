@@ -32,3 +32,10 @@ jobs:
           if ! cp -a .env.example .env; then exit 255; fi
       - name: lint docker-compose file
         run: docker-compose config
+
+  testing:
+    name: run docker-compose
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          .github/tests.sh
