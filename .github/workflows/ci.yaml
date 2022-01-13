@@ -4,7 +4,7 @@ on:
   push:
 
 concurrency:
-  group: ${{ github.event.number }}
+  group: banana
   cancel-in-progress: true
 
 jobs:
@@ -14,7 +14,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-
       - name: Codespell
         uses: codespell-project/actions-codespell@master
         with:
@@ -28,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      - name: setup .env
+        run: |
+          if ! cp -a .env.example .env; then exit 255; fi
       - name: lint docker-compose file
         run: docker-compose config
