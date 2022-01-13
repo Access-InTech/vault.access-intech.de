@@ -40,7 +40,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: run test
+      - name: setup .env
+        run: |
+          if ! cp -a .env.example .env; then exit 255; fi
+      - name: run tests
         run: |
           chmod +x ./.github/tests.sh
           ./.github/tests.sh
