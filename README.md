@@ -2,4 +2,4 @@
 
 # vault.access-intech.de
 
-Deploy vaultwarden Docker container on private netcup server
+Deploy vaultwarden Docker container on private instance
