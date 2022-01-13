@@ -3,7 +3,7 @@
 # run docker-compose tests
 #
 
-set -x
+# set -x
 set -o errexit
 set -o pipefail
 
@@ -11,7 +11,7 @@ docker-compose logs --timestamps --follow &
 
 if docker-compose up --detach; then
     unset i
-    for ((i=1;i<=60;i++)); do 
+    for ((i=1;i<=120;i++)); do 
         echo -n "Health-Check ${i} :: "
         CONTAINER_STATUS=$(docker ps --filter "name=$(grep ENV_ENV_CONTAINER_NAME .env | awk -F= '{print $2}')" --format "{{.Status}}"| grep -Eo "\((.*)\)")
         echo "${CONTAINER_STATUS}"
