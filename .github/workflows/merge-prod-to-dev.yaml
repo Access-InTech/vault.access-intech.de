@@ -1,0 +1,31 @@
+name: "Auto merge prod to dev branch"
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  prod-branch: main
+  dev-branch: dev
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Merge ${{ env.prod-branch }} into ${{ env.dev-branch }}"
+        uses: "actions/github-script@v5"
+        with:
+          github-token: "${{ github.token }}"
+          script: |
+            if ("${{ github.ref }}" == "refs/heads/${{ env.prod-branch }}") {
+              await github.rest.repos.merge({
+                owner: "${{ github.repository_owner }}",
+                repo: "${{ github.event.repository.name }}",
+                base: "${{ env.dev-branch }}"",
+                head: "${{ env.prod-branch }}",
+                commit_message: "Automatic merge from '${{ env.prod-branch }}"' to '${{ env.dev-branch }}'",
+              });
+            }
