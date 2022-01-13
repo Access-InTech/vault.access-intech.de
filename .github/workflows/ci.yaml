@@ -35,7 +35,11 @@ jobs:
 
   testing:
     name: run docker-compose
+    needs: [codespell, linting]
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: run test
+        run: |
           .github/tests.sh
