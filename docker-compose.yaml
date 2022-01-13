@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:${ENV_TAG}
+    restart: always
+    container_name: ${ENV_CONTAINER_NAME}
+    environment:
+      - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
+      - WEBSOCKET_ENABLED=${ENV_WEBSOCKET_ENABLED}
+      - SIGNUPS_ALLOWED=${ENV_SIGNUPS_ALLOWED}
+      - SIGNUPS_VERIFY=${ENV_SIGNUPS_VERIFY}
+      - SHOW_PASSWORD_HINT=${ENV_SHOW_PASSWORD_HINT}
+    ports:
+      - "8081:80"
+      - "3012:3012"
+    volumes:
+      - "./data:/data"
