@@ -2,4 +2,4 @@
 
 # vault.access-intech.de
 
-Deploy vaultwarden Docker container on private instance
+Deploy vaultwarden Docker container on an own instance
