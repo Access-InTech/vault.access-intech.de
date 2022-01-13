@@ -35,7 +35,7 @@ jobs:
 
   testing:
     name: run docker-compose
-    needs: [codespell, linting]
+    needs: [codespell, lint-docker-compose-file]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
