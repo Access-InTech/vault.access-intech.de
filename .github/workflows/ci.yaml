@@ -29,6 +29,6 @@ jobs:
         uses: actions/checkout@v2
       - name: setup .env
         run: |
-          [[ cp -a .env.example .env ]] || exit 1
+          if ! cp -a .env.example .env; then exit 255; fi
       - name: lint docker-compose file
         run: docker-compose config
