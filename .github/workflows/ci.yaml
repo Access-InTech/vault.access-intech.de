@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+jobs:
+  codespell:
+    name: codespell
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Codespell
+        uses: codespell-project/actions-codespell@master
+        with:
+          skip: .git
+          check_filenames: true
+          check_hidden: true
+
+  lint-docker-compose-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: lint docker-compose file
+        run: docker-compose config
