@@ -1,4 +1,4 @@
-![CI](https://github.com/Access-InTech/vault.access-intech.de/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Access-InTech/vault.access-intech.de/actions/workflows/ci.yaml/badge.svg)
 
 # vault.access-intech.de
 
