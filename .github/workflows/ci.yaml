@@ -32,3 +32,18 @@ jobs:
           if ! cp -a .env.example .env; then exit 255; fi
       - name: lint docker-compose file
         run: docker-compose config
+
+  testing:
+    name: run docker-compose
+    needs: [codespell, lint-docker-compose-file]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: setup .env
+        run: |
+          if ! cp -a .env.example .env; then exit 255; fi
+      - name: run tests
+        run: |
+          chmod +x ./.github/tests.sh
+          ./.github/tests.sh
