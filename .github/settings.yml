@@ -58,10 +58,10 @@ repository:
   enable_vulnerability_alerts: true
 
 # Labels: define labels for Issues and Pull Requests
-labels:
-  - name: test
-    color: CC0000
-    description: A Label created via settings.yml
+# labels:
+#   - name: bug
+#     color: CC0000
+#     description: An issue with the system 🐛.
 # 
 #   - name: feature
 #     # If including a `#`, make sure to wrap it with quotes!
